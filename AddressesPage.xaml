@@ -1,0 +1,69 @@
+﻿<Page x:Class="WpfApp3.Views.AddressesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="850"
+      Title="Адреса"
+      Background="#FF1E1E1E">
+    <Page.Resources>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF555555"/>
+            <Setter Property="Padding" Value="8 4"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Добавить" Width="100" Margin="0,0,5,0" x:Name="AddAddressButton" 
+                    Click="AddAddressButton_Click"
+                    Background="#FF3D3D40" Foreground="White" BorderBrush="#FF555555"
+                    Padding="5"/>
+            <Button Content="Редактировать" Width="100" Margin="0,0,5,0" x:Name="EditAddressButton" 
+                    Click="EditAddressButton_Click"
+                    Background="#FF3D3D40" Foreground="White" BorderBrush="#FF555555"
+                    Padding="5"/>
+            <Button Content="Удалить" Width="100" Margin="0,0,5,0" x:Name="DeleteAddressButton" 
+                    Click="DeleteAddressButton_Click"
+                    Background="#FF3D3D40" Foreground="White" BorderBrush="#FF555555"
+                    Padding="5"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" x:Name="AddressesGrid" AutoGenerateColumns="False" IsReadOnly="True" 
+                 SelectionMode="Single" Background="#FF252526" Foreground="White" 
+                 BorderBrush="#FF555555" RowBackground="#FF1E1E1E" AlternatingRowBackground="#FF252526"
+                 HeadersVisibility="Column" GridLinesVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Клиент (ID)" Binding="{Binding PersonID}" Width="100"/>
+                <DataGridTextColumn Header="Индекс" Binding="{Binding IndexAddress}" Width="80"/>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country.CountryShort}" Width="100"/>
+                <DataGridTextColumn Header="Регион" Binding="{Binding Region.Region1}" Width="150"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding City.City1}" Width="150"/>
+                <DataGridTextColumn Header="Улица" Binding="{Binding Street}" Width="*"/>
+                <DataGridTextColumn Header="Дом" Binding="{Binding Bulding}" Width="70"/>
+                <DataGridTextColumn Header="Офис" Binding="{Binding Office}" Width="70"/>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF007ACC"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
+</Page>
