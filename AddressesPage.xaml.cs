@@ -7,20 +7,8 @@ namespace WpfApp3.Views
 {
     public partial class AddressesPage : Page
     {
-        // Используем статический метод get_Context() для получения экземпляра контекста,
-        // как определено в файле контекста друга.
-        // Либо, если бы не было get_Context, то: private wpfEntities _context = new wpfEntities();
-        private wpfEntities _context = wpfEntities.get_Context(); // Используем get_Context, если он публичный,
-                                                                  // или нужно будет сделать его public, 
-                                                                  // или создавать new wpfEntities() здесь.
-                                                                  // Для простоты и если get_Context() доступен:
-                                                                  // ПРОВЕРЬ: если get_Context() приватный, то нужно его сделать public
-                                                                  // или здесь писать: private wpfEntities _context = new wpfEntities();
-                                                                  // Будем исходить из того, что мы можем получить экземпляр.
-                                                                  // Если get_Context() в wpfEntities приватный, то здесь нужно создавать
-                                                                  // новый экземпляр: private wpfEntities _context = new wpfEntities();
-                                                                  // Давай пока остановимся на создании нового экземпляра здесь,
-                                                                  // так как это более стандартный подход для страниц.
+        // Используем статический метод get_Context() для получения экземпляра контекста
+        private wpfEntities _context = wpfEntities.get_Context(); 
 
         private wpfEntities _db = new wpfEntities(); // Создаем экземпляр контекста для этой страницы
 
